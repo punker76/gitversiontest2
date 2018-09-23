@@ -170,7 +170,7 @@ Task("CreatePreRelease")
         throw new Exception("The GITHUB_TOKEN environment variable is not defined.");
     }
 
-    GitReleaseManagerCreate(username, token, "punker76", "gitversiontest", new GitReleaseManagerCreateSettings {
+    GitReleaseManagerCreate(username, token, "punker76", "gitversiontest2", new GitReleaseManagerCreateSettings {
         Milestone         = gitVersion.MajorMinorPatch,
         Name              = gitVersion.SemVer,
         Prerelease        = true,
