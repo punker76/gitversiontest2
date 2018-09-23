@@ -1,0 +1,16 @@
+source https://api.nuget.org/v3/index.json
+
+nuget gitlink
+
+group cake
+	source https://api.nuget.org/v3/index.json
+	framework: net45
+	
+	nuget Cake
+	nuget Cake.Git
+	nuget Cake.Figlet
+	nuget Cake.Paket
+	nuget Cake.Paket.Module
+	nuget vswhere
+	nuget GitVersion.CommandLine prerelease
+	nuget gitreleasemanager prerelease
