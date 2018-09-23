@@ -12,6 +12,7 @@ branches:
   develop:
     mode: ContinuousDeployment
     tag: alpha
+    increment: Inherit
     prevent-increment-of-merged-branch-version: true
     track-merge-target: true
   pull-request:
