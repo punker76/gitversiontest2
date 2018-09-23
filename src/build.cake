@@ -144,7 +144,7 @@ Task("CreateRelease")
         throw new Exception("The GITHUB_TOKEN environment variable is not defined.");
     }
 
-    GitReleaseManagerCreate(username, token, "punker76", "gitversiontest", new GitReleaseManagerCreateSettings {
+    GitReleaseManagerCreate(username, token, "punker76", "gitversiontest2", new GitReleaseManagerCreateSettings {
         Milestone         = gitVersion.MajorMinorPatch,
         Name              = gitVersion.SemVer,
         Prerelease        = false,
@@ -195,7 +195,7 @@ Task("ExportReleaseNotes")
     }
 
     EnsureDirectoryExists(Directory(publishDir));
-    GitReleaseManagerExport(username, token, "punker76", "gitversiontest", publishDir + "/releasenotes.md", new GitReleaseManagerExportSettings {
+    GitReleaseManagerExport(username, token, "punker76", "gitversiontest2", publishDir + "/releasenotes.md", new GitReleaseManagerExportSettings {
         // TagName         = gitVersion.SemVer,
         TagName         = "1.6.0",
         TargetDirectory = publishDir,
