@@ -208,6 +208,7 @@ Task("ExportReleaseNotes")
 ///////////////////////////////////////////////////////////////////////////////
 
 Task("Default")
+    .IsDependentOn("Update-SolutionInfo")
     .IsDependentOn("Build");
 
 Task("appveyor")
