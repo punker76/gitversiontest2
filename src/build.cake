@@ -148,7 +148,7 @@ Task("CreateRelease")
         Milestone         = gitVersion.MajorMinorPatch,
         Name              = gitVersion.SemVer,
         Prerelease        = false,
-        TargetCommitish   = "master",
+        TargetCommitish   = branchName,
         WorkingDirectory  = "../"
     });
 });
@@ -170,11 +170,11 @@ Task("CreatePreRelease")
         throw new Exception("The GITHUB_TOKEN environment variable is not defined.");
     }
 
-    GitReleaseManagerCreate(username, token, "punker76", "gitversiontest", new GitReleaseManagerCreateSettings {
+    GitReleaseManagerCreate(username, token, "punker76", "gitversiontest2", new GitReleaseManagerCreateSettings {
         Milestone         = gitVersion.MajorMinorPatch,
         Name              = gitVersion.SemVer,
         Prerelease        = true,
-        TargetCommitish   = "master",
+        TargetCommitish   = branchName,
         WorkingDirectory  = "../"
     });
 });
@@ -196,8 +196,7 @@ Task("ExportReleaseNotes")
 
     EnsureDirectoryExists(Directory(publishDir));
     GitReleaseManagerExport(username, token, "punker76", "gitversiontest2", publishDir + "/releasenotes.md", new GitReleaseManagerExportSettings {
-        // TagName         = gitVersion.SemVer,
-        TagName         = "1.6.0",
+        TagName         = gitVersion.MajorMinorPatch,
         TargetDirectory = publishDir,
         LogFilePath     = publishDir + "/grm.log"
     });
@@ -208,6 +207,7 @@ Task("ExportReleaseNotes")
 ///////////////////////////////////////////////////////////////////////////////
 
 Task("Default")
+    .IsDependentOn("Update-SolutionInfo")
     .IsDependentOn("Build");
 
 Task("appveyor")
