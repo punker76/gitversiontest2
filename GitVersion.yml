@@ -1,11 +1,11 @@
 assembly-versioning-scheme: MajorMinorPatchTag
 mode: ContinuousDeployment
-next-version: 1.3.1
+next-version: 1.4.0
 branches:
   master:
     mode: ContinuousDeployment
     tag: rc
-    increment: Minor
+    increment: Inherit
     prevent-increment-of-merged-branch-version: true
     track-merge-target: false
     is-release-branch: true
